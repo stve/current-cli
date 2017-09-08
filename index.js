@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-'use strict';
-
-const log = console.log;
-const path = require('path');
 
 const program = require('commander');
+const Enquirer = require('enquirer');
+const prompt = require('prompt-confirm');
 
 const { configuration } = require('./lib/config');
 const { LANGUAGES } = require('./lib/languages');
@@ -19,7 +17,7 @@ program
 program
   .arguments('<language>')
   .action((l) => {
-     langValue = l;
+    langValue = l;
   });
 
 program.parse(process.argv);
@@ -27,42 +25,37 @@ program.parse(process.argv);
 function configure() {
   bolt("Tell current which languages you'd like to report on...\n");
 
-  const Enquirer = require('enquirer');
   const enquirer = new Enquirer();
-  enquirer.register('confirm', require('prompt-confirm'));
+  enquirer.register('confirm', prompt);
 
-  let settings = {};
+  const settings = {};
 
   LANGUAGES.forEach((language) => {
-    enquirer.question(language.name, `${language.name}?`, {type: 'confirm'});
+    enquirer.question(language.name, `${language.name}?`, { type: 'confirm' });
   });
 
   enquirer
     .prompt(LANGUAGES.map(l => l.name))
-    .then(function(answers) {
+    .then((answers) => {
       settings.languages = answers;
 
       configuration.saveSettings(settings);
 
-      bolt("Settings saved!")
+      bolt('Settings saved!');
     });
 }
 
 function list() {
-  let settings = configuration.loadSettings();
+  const settings = configuration.loadSettings();
 
-  let langs = LANGUAGES.filter((l) => {
-    return settings.languages.hasOwnProperty(l.name) && settings.languages[l.name]
-  });
+  const langs = LANGUAGES.filter(l => typeof settings.languages[l.name] !== 'undefined');
 
   current(langs);
 }
 
 function lookup(lang) {
-  lang = lang.toLowerCase();
-  let langs = LANGUAGES.filter((l) => {
-    return l.name === lang;
-  });
+  const lookupValue = lang.toLowerCase();
+  const langs = LANGUAGES.filter(l => l.name === lookupValue);
 
   if (langs.length > 0) {
     current(langs);
@@ -73,10 +66,10 @@ function lookup(lang) {
 
 if (program.configure) {
   configure();
-  return;
+  process.exit(0);
 }
 
-if (typeof langValue === "undefined") {
+if (typeof langValue === 'undefined') {
   if (configuration.isConfigured()) {
     list();
   } else {
@@ -84,39 +77,4 @@ if (typeof langValue === "undefined") {
   }
 } else {
   lookup(langValue);
-}
-
-if (program.list) {
-  if (configuration.isConfigured()) {
-    let settings = configuration.loadSettings();
-
-    let langs = LANGUAGES.filter((l) => {
-      return settings.languages.hasOwnProperty(l.name) && settings.languages[l.name]
-    });
-
-    current(langs);
-
-  } else {
-    bolt("Tell current which languages you'd like to report on...\n");
-
-    const Enquirer = require('enquirer');
-    const enquirer = new Enquirer();
-    enquirer.register('confirm', require('prompt-confirm'));
-
-    let settings = {};
-
-    LANGUAGES.forEach((language) => {
-      enquirer.question(language.name, `${language.name}?`, {type: 'confirm'});
-    });
-
-    enquirer
-      .prompt(LANGUAGES.map(l => l.name))
-      .then(function(answers) {
-        settings.languages = answers;
-
-        configuration.saveSettings(settings);
-
-        bolt("\nSettings saved!")
-      });
-  }
 }
