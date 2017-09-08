@@ -48,7 +48,7 @@ function configure() {
 function list() {
   const settings = configuration.loadSettings();
 
-  const langs = LANGUAGES.filter(l => typeof settings.languages[l.name] !== 'undefined');
+  const langs = LANGUAGES.filter(l => settings.languages[l.name]);
 
   current(langs);
 }
@@ -64,17 +64,12 @@ function lookup(lang) {
   }
 }
 
-if (program.configure) {
-  configure();
-  process.exit(0);
-}
-
-if (typeof langValue === 'undefined') {
-  if (configuration.isConfigured()) {
-    list();
-  } else {
-    configure();
-  }
-} else {
+if (typeof langValue !== 'undefined') {
   lookup(langValue);
+} else if (program.configure) {
+  configure();
+} else if (configuration.isConfigured()) {
+  list();
+} else {
+  configure();
 }
