@@ -1,7 +1,6 @@
 {
   "name": "current-cli",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.1.0",
@@ -16,5 +15,10 @@
     "index.js",
     "lib/go.js",
     "lib/utils.js"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
 }
