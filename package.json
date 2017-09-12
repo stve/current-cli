@@ -2,6 +2,9 @@
   "name": "current-cli",
   "version": "1.0.0",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint 'lib/' 'index.js'"
+  },
   "dependencies": {
     "chalk": "^2.1.0",
     "commander": "^2.11.0",
