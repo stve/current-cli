@@ -33,6 +33,7 @@ go: 1.8.3
 
 * Support additional languages
 * Support registering commands `current --register <name> --command <shellcommand>`
+* Support toggling languages without running a full configuration `current --add elixir`
 
 ## Contributing
 
