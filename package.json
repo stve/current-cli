@@ -16,8 +16,7 @@
   },
   "files": [
     "index.js",
-    "lib/go.js",
-    "lib/utils.js"
+    "lib"
   ],
   "devDependencies": {
     "eslint": "^4.6.1",
