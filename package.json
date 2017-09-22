@@ -1,16 +1,33 @@
 {
   "name": "current-cli",
+
+  "description": "See what language versions are configured in your current environment",
+
   "version": "0.0.1",
+
   "license": "MIT",
+
+  "author": {
+     "name": "Steve Agalloco",
+     "email": "steve.agalloco@gmail.com",
+     "url": "http://beforeitwasround.com"
+   },
+
+   "homepage": "https://github.com/stve/current-cli",
+
+   "repository": {
+     "type": "git",
+     "url": "https://github.com/stve/current-cli.git"
+   },
+
+   "bugs": {
+     "url": "https://github.com/stve/current-cli/issues"
+   },
+
   "scripts": {
     "lint": "eslint 'lib/' 'index.js'"
   },
-  "dependencies": {
-    "chalk": "^2.1.0",
-    "commander": "^2.11.0",
-    "enquirer": "^1.0.2",
-    "prompt-confirm": "^1.2.0"
-  },
+
   "bin": {
     "current": "index.js"
   },
@@ -18,6 +35,19 @@
     "index.js",
     "lib"
   ],
+
+  "keywords": [
+    "cli-app",
+    "cli"
+  ],
+
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0",
+    "enquirer": "^1.0.2",
+    "prompt-confirm": "^1.2.0"
+  },
+
   "devDependencies": {
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",

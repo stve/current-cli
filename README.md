@@ -1,5 +1,7 @@
 # ⚡️ Current
 
+See what language versions are configured in your current environment
+
 ## Installation
 
 ```
