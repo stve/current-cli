@@ -1,6 +1,6 @@
 {
   "name": "current-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'lib/' 'index.js'"
