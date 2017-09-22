@@ -35,11 +35,7 @@ ruby: 2.4.1p111
 
 ### Viewing a single version
 
-```
-$ current go
-```
-
-Assuming you've entered a languages that is currently supported, `current` will return the configured version:
+Assuming you've entered a language that is currently supported, `current` will return the configured version:
 
 ```
 $ current go
@@ -48,7 +44,7 @@ $ current go
 
 ## Roadmap
 
-* Support additional languages
+* Support additional languages (see [`languages`](https://github.com/stve/current-cli/blob/master/lib/languages.js))
 * Support registering commands `current --register <name> --command <shellcommand>`
 * Support toggling languages without running a full configuration `current --add elixir`
 
