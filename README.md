@@ -8,25 +8,42 @@ npm i -g current-cli
 
 ## Usage
 
+```
+$ current --help
+
+ Usage: index [options] <language>
+
+
+ Options:
+
+   -c, --configure  Configure
+   -h, --help       output usage information
+```
+
+### Configuration
+
 On first run, or at any time you can configure `current` so that it knows what languages you'd like to see reported. Run `current --configure` and it will prompt you
 
 ### Viewing all versions
 
-```shellcommand
-current
+```
+$ current
+go: 1.8.3
+java: 1.8.0_102
+ruby: 2.4.1p111
 ```
 
 ### Viewing a single version
 
-```shellcommand
-current go
+```
+$ current go
 ```
 
 Assuming you've entered a languages that is currently supported, `current` will return the configured version:
 
-```shellcommand
-current go
-go: 1.8.3
+```
+$ current go
+1.8.3
 ```
 
 ## Roadmap
