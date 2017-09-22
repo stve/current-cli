@@ -8,7 +8,6 @@ const { configure, list, lookup } = require('./lib/commands');
 let langValue;
 
 program
-  .version('0.1.0')
   .option('-c, --configure', 'Configure');
 
 program
